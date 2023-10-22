@@ -19,13 +19,18 @@ public class checkout {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(150, TimeUnit.SECONDS);
         driver.get(baseUrl);
         driver.findElement(By.id("user-name")).sendKeys("standard_user");
         driver.findElement(By.id("password")).sendKeys("secret_sauce");
         driver.findElement(By.id("login-button")).click();
 
     }
+    @And("Add to chart")
+    public void add_product() {
+        driver.findElement(By.id("add-to-cart-sauce-labs-backpack")).click();
+    }
+
     @Given("User akses halaman chart")
     public void halaman_chart() {
         driver.findElement(By.xpath("/html/body/div/div/div/div[1]/div[1]/div[3]/a")).click();
